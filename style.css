@@ -1,0 +1,571 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #0029ff;
+  --text-color: #fff;
+  --light-blue: #e9ecef;
+  --dark-color: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+/* Utility Classes */
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.flex-gap {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1rem;
+}
+.mt-5 {
+  margin-top: 2rem;
+}
+.mt-7 {
+  margin-top: 3.5rem;
+}
+
+.box-shadow {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* End of Utility Classes */
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.8em 2.2em;
+  transition: all 0.2s ease-in-out;
+  text-transform: capitalize;
+  border-radius: 0.7em;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Header */
+
+header nav {
+  padding: 1em;
+}
+
+header nav ul li {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+header nav ul li:hover {
+  scale: 1.1;
+}
+
+header nav ul li img {
+  width: 2rem;
+}
+
+/* End of header */
+
+/* Main Body */
+
+main {
+  padding: 1em 7em;
+  position: relative;
+}
+
+/* Left Panel */
+main .left-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  background: var(--text-color);
+  width: 5rem;
+  height: 80vh;
+  box-shadow: 3px 4px 20px 1px rgba(0, 0, 0, 0.308);
+  border-radius: 0 20px 20px 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+main .left-panel.opened {
+  width: 25rem;
+}
+
+main .left-panel .one-img {
+  opacity: 1;
+  position: absolute;
+  top: 10em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+}
+main .left-panel.opened .one-img {
+  opacity: 0;
+}
+
+main .left-panel .panel-heading {
+  background: var(--dark-color);
+  color: var(--text-color);
+  padding: 0.5em 1em;
+  position: relative;
+}
+
+main .left-panel .panel-heading h1 {
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+main .left-panel.opened .panel-heading h1 {
+  opacity: 1;
+}
+
+main .left-panel .panel-heading img {
+  width: 3em;
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%) rotate(0deg);
+  transition: all 0.2s ease-in-out;
+}
+
+main .left-panel.opened .panel-heading img {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+main .left-panel .panel-list-container {
+  padding: 0 1em;
+}
+
+main .left-panel .panel-list {
+  padding: 1em;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+main .left-panel.opened .panel-list {
+  opacity: 1;
+}
+main .left-panel .panel-list li {
+  list-style-type: disc;
+}
+
+main .left-panel .panel-list :nth-child(n):not(:first-child) {
+  padding-left: 1em;
+}
+
+/* End of Left Panel */
+
+/* Right Panel */
+
+main .right-panel {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  background: var(--text-color);
+  width: 5rem;
+  height: 23rem;
+  box-shadow: 3px 4px 20px 1px rgba(0, 0, 0, 0.308);
+  border-radius: 20px 0px 0px 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+main .right-panel img{
+  width: 2em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+main .right-panel .elms, .text{
+  padding:1.2em 1em;
+  background: var(--dark-color);
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1px;
+  color: var(--text-color);
+  position: absolute;
+  left: 0;
+  top:0;
+  height:100%;
+  width:2rem;
+}
+
+/* End of Right Panel */
+
+/* Bottom Icons */
+  main .bottom-icons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--text-color);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 20px 0;
+    gap:1em;
+  }
+/* End of Bottom Icons */
+
+main .heading h1 {
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+main .info-about {
+  padding: 1.2em;
+  background: var(--light-blue);
+}
+
+main .info-about h3 {
+  text-transform: capitalize;
+}
+
+main .info-about p {
+  font-weight: 500;
+  margin-top: 0.4rem;
+  opacity: 0.8;
+}
+
+/* Cards Section */
+
+main .cards-section {
+  display: grid;
+  padding: 1.5em;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+}
+
+main .cards-section .card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.178);
+  padding-bottom: 1em;
+}
+
+main .cards-section .card .heading {
+  background: var(--dark-color);
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+  padding: 0.8em;
+}
+
+main .cards-section .card .heading img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 1em;
+}
+
+main .cards-section .card .description {
+  padding: 2em 1em;
+  border-bottom: 1px solid #0000003a;
+}
+
+main .cards-section :nth-child(2) .thread-container {
+  padding: 0em 1em;
+}
+
+main .cards-section :nth-child(2) .thread-container .thread-heading {
+  display: flex;
+  align-items: center;
+  gap: 2.6em;
+}
+
+main
+  .cards-section
+  :nth-child(2)
+  .thread-container
+  .thread-main-content
+  .sub-threads {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+main
+  .cards-section
+  :nth-child(2)
+  .thread-container
+  .thread-main-content
+  .sub-threads
+  .sub-thread1,
+.sub-thread2,
+.thread-summary {
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.178);
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  flex: 1;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 1em;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0.4em;
+  border-radius: 10px;
+}
+
+main
+  .cards-section
+  :nth-child(2)
+  .thread-container
+  .thread-main-content
+  .all-categories {
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
+main
+  .cards-section
+  :nth-child(2)
+  .thread-container
+  .thread-main-content
+  .all-categories
+  .category-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+main
+  .cards-section
+  :nth-child(2)
+  .thread-container
+  .thread-main-content
+  .all-categories
+  select {
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.178);
+  padding: 1em;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+main .cards-section :nth-child(3) .third-card-content {
+  padding: 1.5em;
+}
+
+main .cards-section :nth-child(3) .third-card-content .title textarea {
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.178);
+}
+
+main .cards-section :nth-child(3) .third-card-content .content div {
+  box-shadow: 1px 1px 20px 1px rgba(0, 0, 0, 0.178);
+  padding: 1.2em;
+}
+main .cards-section :nth-child(3) .third-card-content .content ul li {
+  text-transform: capitalize;
+  color: #000000a2;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+main
+  .cards-section
+  :nth-child(3)
+  .third-card-content
+  .content
+  div
+  .content-icons {
+  margin-top: 1em;
+}
+main
+  .cards-section
+  :nth-child(3)
+  .third-card-content
+  .content
+  div
+  .content-icons
+  li
+  img {
+  width: 1.4em;
+}
+
+main
+  .cards-section
+  :nth-child(3)
+  .third-card-content
+  .content
+  div
+  .content-icons
+  :nth-child(4)
+  img {
+  width: 5em;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content {
+  padding: 1.5em;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .content {
+  display: grid;
+  gap: 1em;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .content p {
+  color: #000000a4;
+  font-weight: bold;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .content div {
+  text-align: end;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .content button {
+  background: none;
+  color: #00000080;
+  font-weight: bolder;
+  font-size: 1em;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .introduction h2,
+.thread-A h2 {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  font-weight: 500;
+  background: var(--light-blue);
+  padding: 0.2em 0.4em;
+  border-radius: 10px;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .thread-A h2 {
+  border: 1px solid #00000021;
+  background: none;
+}
+
+main .cards-section :nth-child(4) .fourth-card-content .example-content {
+  padding-left: 2em;
+}
+main .cards-section :nth-child(4) .fourth-card-content .example-content h3 {
+  border: 1px solid #00000021;
+  font-weight: 600;
+  padding: 0.4em;
+  border-radius: 10px;
+}
+
+/* End of Cards Section */
+
+/* End of Main Body */
+
+/* Responsiveness */
+
+@media (max-width: 768px) {
+  main .cards-section{
+  padding: 0;
+  }
+  main .right-panel{
+    display:none;
+  }
+  main .left-panel {
+    display:none;
+  }
+  main{
+    padding:2.5em;
+  }
+  main .bottom-icons
+  {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  main .cards-section .card .heading {
+    font-size: 0.8em;
+  }
+
+  main
+    .cards-section
+    :nth-child(2)
+    .thread-container
+    .thread-main-content
+    .sub-threads {
+    flex-direction: column;
+  }
+  main .heading h1 {
+    text-align: center;
+  }
+  main .heading {
+    justify-content: center;
+  }
+
+}
+
+
+
+@media (max-width: 1024px) {
+  main .cards-section {
+    grid-template-columns: 1fr;
+  }
+  main
+    .cards-section
+    :nth-child(2)
+    .thread-container
+    .thread-main-content
+    .all-categories {
+    padding-left: 0em;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    margin-block: 1em;
+  }
+}
+
+@media (min-width: 1800px) {
+  #app {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
